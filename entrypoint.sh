@@ -14,7 +14,7 @@ if [[ $(git diff origin/master HEAD --name-only | grep pom.xml$ | wc -c) -ne 0 ]
     find . -name 'THIRD-PARTY.txt' -exec rsync -R \{\} /pr \;
 
     git checkout -f origin/master
-    mvn -T 8C org.codehaus.mojo:license-maven-plugin:2.0.0:aggregate-add-third-party -Dlicense.includedScopes=test,compile,runtime,provided -Dlicense.excludedGroups="org\.camunda.*""
+    mvn -T 8C org.codehaus.mojo:license-maven-plugin:2.0.0:aggregate-add-third-party -Dlicense.includedScopes=test,compile,runtime,provided -Dlicense.excludedGroups="org\.camunda.*"
     find . -name 'THIRD-PARTY.txt' -exec rsync -R \{\} /master \;
 
     echo -e "<details><summary>Dependency Tree Diff</summary><p>\n" >/github/workspace/dep-tree-diff.txt
